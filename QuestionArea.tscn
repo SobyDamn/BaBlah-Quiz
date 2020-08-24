@@ -1,0 +1,98 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://StartMenuFonts.tres" type="DynamicFont" id=1]
+[ext_resource path="res://new_theme.tres" type="Theme" id=2]
+
+[sub_resource type="Theme" id=1]
+default_font = ExtResource( 1 )
+
+[node name="QuestionArea" type="Node2D"]
+
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 576.0
+margin_bottom = 1024.0
+color = Color( 0.392157, 0.282353, 0.905882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionContainer" type="VBoxContainer" parent="."]
+margin_left = 88.0
+margin_top = 700.0
+margin_right = 488.0
+margin_bottom = 1027.0
+theme = ExtResource( 2 )
+custom_constants/separation = 40
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionA" type="Button" parent="OptionContainer"]
+margin_top = 31.0
+margin_right = 400.0
+margin_bottom = 67.0
+theme = SubResource( 1 )
+text = "Option A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionB" type="Button" parent="OptionContainer"]
+margin_top = 107.0
+margin_right = 400.0
+margin_bottom = 143.0
+theme = SubResource( 1 )
+text = "Option B"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionC" type="Button" parent="OptionContainer"]
+margin_top = 183.0
+margin_right = 400.0
+margin_bottom = 219.0
+theme = SubResource( 1 )
+text = "Option C"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionD" type="Button" parent="OptionContainer"]
+margin_top = 259.0
+margin_right = 400.0
+margin_bottom = 295.0
+theme = SubResource( 1 )
+text = "Option D"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestionContainer" type="VBoxContainer" parent="."]
+margin_right = 576.0
+margin_bottom = 746.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeLabel" type="Label" parent="QuestionContainer"]
+margin_top = 237.0
+margin_right = 576.0
+margin_bottom = 312.0
+custom_fonts/font = ExtResource( 1 )
+text = "60
+"
+align = 1
+valign = 1
+
+[node name="Question" type="Label" parent="QuestionContainer"]
+margin_top = 316.0
+margin_right = 576.0
+margin_bottom = 508.0
+custom_fonts/font = ExtResource( 1 )
+text = "How can you throw a ball as hard as you can and have it come back to you, even if it doesn’t bounce off anything? There is nothing attached to it, and no one else catches or throws it back to you."
+align = 1
+autowrap = true
+
+[node name="Timer" type="Timer" parent="QuestionContainer"]
