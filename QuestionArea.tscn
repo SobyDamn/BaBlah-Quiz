@@ -30,7 +30,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OptionA" type="Button" parent="OptionContainer"]
+[node name="OptionA" type="Button" parent="OptionContainer" groups=[
+"OptionButton",
+]]
 margin_top = 5.0
 margin_right = 400.0
 margin_bottom = 54.0
@@ -40,7 +42,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OptionB" type="Button" parent="OptionContainer"]
+[node name="OptionB" type="Button" parent="OptionContainer" groups=[
+"OptionButton",
+]]
 margin_top = 94.0
 margin_right = 400.0
 margin_bottom = 143.0
@@ -50,7 +54,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OptionC" type="Button" parent="OptionContainer"]
+[node name="OptionC" type="Button" parent="OptionContainer" groups=[
+"OptionButton",
+]]
 margin_top = 183.0
 margin_right = 400.0
 margin_bottom = 232.0
@@ -60,7 +66,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OptionD" type="Button" parent="OptionContainer"]
+[node name="OptionD" type="Button" parent="OptionContainer" groups=[
+"OptionButton",
+]]
 margin_top = 272.0
 margin_right = 400.0
 margin_bottom = 321.0
@@ -72,16 +80,16 @@ __meta__ = {
 
 [node name="QuestionContainer" type="VBoxContainer" parent="."]
 margin_right = 576.0
-margin_bottom = 746.0
+margin_bottom = 534.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TimeLabel" type="Label" parent="QuestionContainer"]
-margin_top = 140.0
+margin_top = 34.0
 margin_right = 576.0
-margin_bottom = 241.0
+margin_bottom = 135.0
 custom_fonts/font = ExtResource( 1 )
 text = "60
 "
@@ -89,9 +97,9 @@ align = 1
 valign = 1
 
 [node name="Question" type="Label" parent="QuestionContainer"]
-margin_top = 245.0
+margin_top = 139.0
 margin_right = 576.0
-margin_bottom = 606.0
+margin_bottom = 500.0
 custom_fonts/font = ExtResource( 1 )
 text = "How can you throw a ball as hard as you can and have it come back to you, even if it doesn’t bounce off anything? There is nothing attached to it, and no one else catches or throws it back to you."
 align = 1
