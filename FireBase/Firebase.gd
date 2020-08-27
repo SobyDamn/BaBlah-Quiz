@@ -18,6 +18,11 @@ func setUserData(name,id):
 			},
 		"savedOnline":{
 			"booleanValue":false
+		},
+		"askedQuestion":{
+			"arrayValue":{
+				"values":[]
+			}
 		}
 	}
 func save_userData():
@@ -77,10 +82,10 @@ func save_document( http: HTTPRequest) -> void:
 	else:
 		update_document(http)
 
-func update_document(http: HTTPRequest,path: String = "users/%s?updateMask.fieldPaths=score" % userDetail.userid.stringValue, fields: Dictionary = userDetail) -> void:
+func update_document(http: HTTPRequest,path: String = "users/%s?updateMask.fieldPaths=score" % userDetail.userid.stringValue,path2:String="&updateMask.fieldPaths=askedQuestion", fields: Dictionary = userDetail) -> void:
 	var document := { "fields": userDetail }
 	var body := to_json(document)
-	var url := FIRESTORE_URL + path
+	var url := FIRESTORE_URL + path + path2
 	http.request(url, ["Content-Type: application/json"], false, HTTPClient.METHOD_PATCH, body)
 	print("Updated")
 	save_userData()

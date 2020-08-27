@@ -33,6 +33,7 @@ func onSetting():
 
 
 func onDifficultySelect(val):
+	Utility.gameValues.Mode = val
 	difficulty = val
 	$SettingScreen/DifficultyOption/Current.text = "("+difficulty+")"
 	$SettingScreen.visible = false
@@ -90,3 +91,7 @@ func _on_register_pressed():
 	$UserInfo.text = "Hi!\n%s"%name
 	Firebase.register(registerHTTP,name)
 
+
+
+func _on_Leaderboard_pressed():
+	get_tree().change_scene("res://LeaderBoard.tscn")

@@ -32,13 +32,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HomeScreen" type="Node2D" parent="."]
-position = Vector2( 0, 566 )
+[node name="HomeScreen" type="VBoxContainer" parent="."]
+margin_right = 576.0
+margin_bottom = 800.0
+custom_constants/separation = 100
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="HomeScreen"]
+margin_top = 245.0
+margin_right = 576.0
+margin_bottom = 414.0
+custom_fonts/font = SubResource( 1 )
+text = "BaBlah
+Quiz!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HomeScreen"]
-margin_top = -66.0
-margin_right = 572.0
-margin_bottom = 246.0
+margin_top = 514.0
+margin_right = 576.0
+margin_bottom = 800.0
 theme = ExtResource( 3 )
 custom_constants/separation = 30
 __meta__ = {
@@ -46,7 +65,7 @@ __meta__ = {
 }
 
 [node name="Start" type="Button" parent="HomeScreen/VBoxContainer"]
-margin_right = 572.0
+margin_right = 576.0
 margin_bottom = 49.0
 custom_fonts/font = ExtResource( 2 )
 text = "Start"
@@ -57,7 +76,7 @@ __meta__ = {
 
 [node name="Leaderboard" type="Button" parent="HomeScreen/VBoxContainer"]
 margin_top = 79.0
-margin_right = 572.0
+margin_right = 576.0
 margin_bottom = 128.0
 custom_fonts/font = ExtResource( 2 )
 text = "Leaderboard"
@@ -68,7 +87,7 @@ __meta__ = {
 
 [node name="Setting" type="Button" parent="HomeScreen/VBoxContainer"]
 margin_top = 158.0
-margin_right = 572.0
+margin_right = 576.0
 margin_bottom = 207.0
 custom_fonts/font = ExtResource( 2 )
 text = "Setting"
@@ -79,25 +98,11 @@ __meta__ = {
 
 [node name="Quit" type="Button" parent="HomeScreen/VBoxContainer"]
 margin_top = 237.0
-margin_right = 572.0
+margin_right = 576.0
 margin_bottom = 286.0
 custom_fonts/font = ExtResource( 2 )
 text = "Quit"
 flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Title" type="Label" parent="HomeScreen"]
-margin_left = 2.24493
-margin_top = -417.835
-margin_right = 578.245
-margin_bottom = -117.835
-custom_fonts/font = SubResource( 1 )
-text = "BaBlah
-Quiz!"
-align = 1
-valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -230,6 +235,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="HomeScreen/VBoxContainer/Start" to="." method="onStart"]
+[connection signal="pressed" from="HomeScreen/VBoxContainer/Leaderboard" to="." method="_on_Leaderboard_pressed"]
 [connection signal="pressed" from="HomeScreen/VBoxContainer/Setting" to="." method="onSetting"]
 [connection signal="pressed" from="SettingScreen/DifficultyOption/Button" to="." method="onDifficultySelect" binds= [ "Easy" ]]
 [connection signal="pressed" from="SettingScreen/DifficultyOption/Button2" to="." method="onDifficultySelect" binds= [ "Normal" ]]
