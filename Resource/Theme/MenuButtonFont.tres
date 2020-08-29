@@ -1,0 +1,8 @@
+[gd_resource type="DynamicFont" load_steps=2 format=2]
+
+[ext_resource path="res://Resource/Font/hobo.ttf" type="DynamicFontData" id=1]
+
+[resource]
+size = 30
+outline_color = Color( 1, 0.980392, 0.980392, 1 )
+font_data = ExtResource( 1 )

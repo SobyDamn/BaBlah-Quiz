@@ -1,24 +1,106 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://opensans_extrabold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://StartMenuFonts.tres" type="DynamicFont" id=2]
 [ext_resource path="res://new_theme.tres" type="Theme" id=3]
 [ext_resource path="res://scripts/MainScreen.gd" type="Script" id=4]
+[ext_resource path="res://Resource/Image/logo.png" type="Texture" id=5]
+[ext_resource path="res://Resource/Font/hobo.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Resource/Theme/MenuBTNtheme.tres" type="Theme" id=7]
+[ext_resource path="res://Resource/Icon/start_texture.png" type="Texture" id=8]
+[ext_resource path="res://Resource/Sound/main-menu-bg_song.wav" type="AudioStream" id=9]
+[ext_resource path="res://scripts/MainScreenAnimation.gd" type="Script" id=10]
+[ext_resource path="res://Resource/Image/popup1.png" type="Texture" id=11]
+[ext_resource path="res://Resource/Theme/MenuButtonFont.tres" type="DynamicFont" id=12]
+[ext_resource path="res://Resource/Icon/loading_static.png" type="Texture" id=13]
+[ext_resource path="res://scripts/LoadingScreenMainMenu.gd" type="Script" id=14]
+[ext_resource path="res://Resource/Font/loadingText.tres" type="DynamicFont" id=15]
+[ext_resource path="res://Resource/Image/ErrorInfoPopBG.png" type="Texture" id=16]
 
-[sub_resource type="DynamicFont" id=1]
-size = 60
-font_data = ExtResource( 1 )
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="StyleBoxEmpty" id=15]
+
+[sub_resource type="DynamicFont" id=16]
 size = 20
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
-size = 10
-font_data = ExtResource( 1 )
+[sub_resource type="SpriteFrames" id=17]
+animations = [ {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
-[sub_resource type="DynamicFont" id=4]
-font_data = ExtResource( 1 )
+[sub_resource type="DynamicFont" id=18]
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxEmpty" id=19]
+
+[sub_resource type="DynamicFont" id=20]
+size = 25
+font_data = ExtResource( 6 )
+
+[sub_resource type="SpriteFrames" id=21]
+animations = [ {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=22]
+animations = [ {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="StyleBoxEmpty" id=23]
+
+[sub_resource type="StyleBoxEmpty" id=24]
+
+[sub_resource type="StyleBoxEmpty" id=25]
+
+[sub_resource type="StyleBoxEmpty" id=26]
+
+[sub_resource type="DynamicFont" id=27]
+size = 25
+font_data = ExtResource( 6 )
 
 [node name="MainScreen" type="Node2D"]
 script = ExtResource( 4 )
@@ -27,88 +109,110 @@ script = ExtResource( 4 )
 margin_right = 576.0
 margin_bottom = 1024.0
 rect_min_size = Vector2( 576, 1024 )
-color = Color( 0.278431, 0.380392, 0.843137, 1 )
+color = Color( 0.0470588, 0.254902, 0.47451, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HomeScreen" type="VBoxContainer" parent="."]
+[node name="MenuScreen" type="Node2D" parent="."]
+script = ExtResource( 10 )
+
+[node name="Tween" type="Tween" parent="MenuScreen"]
+
+[node name="CenterContainer" type="CenterContainer" parent="MenuScreen"]
+margin_top = 141.43
 margin_right = 576.0
-margin_bottom = 800.0
-custom_constants/separation = 100
+margin_bottom = 423.43
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="MenuScreen/CenterContainer"]
+position = Vector2( 289.595, 96.5318 )
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 1 )
+
+[node name="CenterContainer2" type="CenterContainer" parent="MenuScreen"]
+margin_left = 184.757
+margin_top = 584.27
+margin_right = 1704.76
+margin_bottom = 1118.27
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 0.13, 0.13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="TextureButton" parent="MenuScreen/CenterContainer2"]
+margin_right = 1520.0
+margin_bottom = 534.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource( 8 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuScreen"]
+margin_top = 670.0
+margin_right = 481.0
+margin_bottom = 810.0
+rect_scale = Vector2( 1.2, 1.2 )
+custom_constants/separation = 15
 alignment = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="HomeScreen"]
-margin_top = 245.0
-margin_right = 576.0
-margin_bottom = 414.0
-custom_fonts/font = SubResource( 1 )
-text = "BaBlah
-Quiz!"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HomeScreen"]
-margin_top = 514.0
-margin_right = 576.0
-margin_bottom = 800.0
-theme = ExtResource( 3 )
-custom_constants/separation = 30
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Start" type="Button" parent="HomeScreen/VBoxContainer"]
-margin_right = 576.0
-margin_bottom = 49.0
-custom_fonts/font = ExtResource( 2 )
-text = "Start"
-flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Leaderboard" type="Button" parent="HomeScreen/VBoxContainer"]
-margin_top = 79.0
-margin_right = 576.0
-margin_bottom = 128.0
-custom_fonts/font = ExtResource( 2 )
+[node name="Leaderboard" type="Button" parent="MenuScreen/VBoxContainer"]
+margin_right = 481.0
+margin_bottom = 38.0
+theme = ExtResource( 7 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Leaderboard"
-flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Setting" type="Button" parent="HomeScreen/VBoxContainer"]
-margin_top = 158.0
-margin_right = 576.0
-margin_bottom = 207.0
-custom_fonts/font = ExtResource( 2 )
+[node name="Setting" type="Button" parent="MenuScreen/VBoxContainer"]
+margin_top = 53.0
+margin_right = 481.0
+margin_bottom = 91.0
+theme = ExtResource( 7 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Setting"
-flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Quit" type="Button" parent="HomeScreen/VBoxContainer"]
-margin_top = 237.0
-margin_right = 576.0
-margin_bottom = 286.0
-custom_fonts/font = ExtResource( 2 )
+[node name="Quit" type="Button" parent="MenuScreen/VBoxContainer"]
+margin_top = 106.0
+margin_right = 481.0
+margin_bottom = 144.0
+theme = ExtResource( 7 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 15 )
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Quit"
-flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SettingScreen" type="Node2D" parent="."]
-visible = false
+position = Vector2( 576, 0 )
 
 [node name="DifficultyOption" type="VBoxContainer" parent="SettingScreen"]
 margin_left = 88.0
@@ -135,32 +239,32 @@ __meta__ = {
 margin_top = 89.0
 margin_right = 400.0
 margin_bottom = 117.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 16 )
 text = "(Easy)"
 align = 1
 
 [node name="Button" type="Button" parent="SettingScreen/DifficultyOption"]
 margin_top = 157.0
 margin_right = 400.0
-margin_bottom = 206.0
+margin_bottom = 195.0
 text = "Easy"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button2" type="Button" parent="SettingScreen/DifficultyOption"]
-margin_top = 246.0
+margin_top = 235.0
 margin_right = 400.0
-margin_bottom = 295.0
+margin_bottom = 273.0
 text = "Normal"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button3" type="Button" parent="SettingScreen/DifficultyOption"]
-margin_top = 335.0
+margin_top = 313.0
 margin_right = 400.0
-margin_bottom = 384.0
+margin_bottom = 351.0
 text = "Hard"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -170,8 +274,6 @@ __meta__ = {
 
 [node name="SaveRequest" type="HTTPRequest" parent="."]
 
-[node name="UpdateRequest" type="HTTPRequest" parent="."]
-
 [node name="RegisterPOP" type="PopupMenu" parent="."]
 margin_left = 95.0
 margin_top = 210.0
@@ -179,6 +281,24 @@ margin_right = 492.0
 margin_bottom = 546.0
 hide_on_item_selection = false
 hide_on_checkable_item_selection = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="RegisterPOP"]
+margin_left = -94.0
+margin_top = -208.0
+margin_right = 482.0
+margin_bottom = 816.0
+color = Color( 0, 0, 0, 0.560784 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="RegisterPOP"]
+position = Vector2( 197.773, 169.65 )
+scale = Vector2( 0.469005, 0.465563 )
+frames = SubResource( 17 )
 
 [node name="register" type="Button" parent="RegisterPOP"]
 margin_left = 129.613
@@ -191,56 +311,136 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="RegisterPOP"]
-margin_left = 53.8782
-margin_top = 47.1434
-margin_right = 351.878
-margin_bottom = 113.143
-custom_fonts/font = ExtResource( 2 )
-text = "Enter your name"
+[node name="ErrorInfo" type="Label" parent="RegisterPOP"]
+margin_left = 56.0
+margin_top = 195.0
+margin_right = 330.0
+margin_bottom = 233.0
+custom_fonts/font = SubResource( 18 )
 align = 1
 valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Name" type="LineEdit" parent="RegisterPOP"]
-margin_left = 96.0
-margin_top = 130.0
-margin_right = 306.0
-margin_bottom = 189.0
-custom_fonts/font = ExtResource( 2 )
-text = "Name"
+margin_left = 29.0
+margin_top = 114.0
+margin_right = 377.0
+margin_bottom = 163.0
+custom_styles/normal = SubResource( 19 )
+custom_fonts/font = SubResource( 20 )
+custom_colors/font_color = Color( 0.960784, 0.941176, 0.941176, 1 )
+text = "Your Name"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Notify" type="Label" parent="RegisterPOP"]
-margin_left = 7.0
-margin_top = 195.0
-margin_right = 393.0
-margin_bottom = 249.0
-custom_fonts/font = SubResource( 3 )
-align = 1
-valign = 1
+[node name="BackgroundSong" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+volume_db = -15.67
+autoplay = true
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="LoadingScreen" type="ColorRect" parent="."]
+visible = false
+margin_right = 576.0
+margin_bottom = 1024.0
+color = Color( 0, 0, 0, 0.560784 )
+script = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="UserInfo" type="Label" parent="."]
-margin_left = 6.7348
-margin_top = 35.9188
-margin_right = 136.735
-margin_bottom = 85.9188
-custom_fonts/font = SubResource( 4 )
-align = 1
+[node name="AnimatedSprite" type="AnimatedSprite" parent="LoadingScreen"]
+position = Vector2( 288, 512 )
+frames = SubResource( 21 )
+
+[node name="LoadingTween" type="Tween" parent="LoadingScreen"]
+
+[node name="LoaderTimer" type="Timer" parent="LoadingScreen"]
+wait_time = 1.5
+autostart = true
+
+[node name="CenterContainer" type="CenterContainer" parent="LoadingScreen"]
+margin_top = 590.0
+margin_right = 576.0
+margin_bottom = 630.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="HomeScreen/VBoxContainer/Start" to="." method="onStart"]
-[connection signal="pressed" from="HomeScreen/VBoxContainer/Leaderboard" to="." method="_on_Leaderboard_pressed"]
-[connection signal="pressed" from="HomeScreen/VBoxContainer/Setting" to="." method="onSetting"]
+
+[node name="Label" type="Label" parent="LoadingScreen/CenterContainer"]
+margin_left = 233.0
+margin_top = 4.0
+margin_right = 343.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 15 )
+text = "Loading...."
+align = 1
+
+[node name="ErrorInfoPOP" type="PopupMenu" parent="."]
+margin_left = 95.0
+margin_top = 210.0
+margin_right = 491.0
+margin_bottom = 534.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="ErrorInfoPOP"]
+margin_left = -96.0
+margin_top = -208.0
+margin_right = 480.0
+margin_bottom = 816.0
+color = Color( 0, 0, 0, 0.411765 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="ErrorInfoPOP"]
+position = Vector2( 198.813, 163.9 )
+scale = Vector2( 0.232301, 0.203539 )
+frames = SubResource( 22 )
+
+[node name="Button" type="Button" parent="ErrorInfoPOP"]
+margin_left = 150.0
+margin_top = 268.0
+margin_right = 252.0
+margin_bottom = 314.0
+custom_styles/hover = SubResource( 23 )
+custom_styles/pressed = SubResource( 24 )
+custom_styles/focus = SubResource( 25 )
+custom_styles/normal = SubResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ErrorInfoPOP"]
+margin_left = 18.0
+margin_top = 49.0
+margin_right = 371.0
+margin_bottom = 262.0
+custom_fonts/font = SubResource( 27 )
+text = "Some Error Text"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_down" from="MenuScreen/CenterContainer2/Start" to="." method="_on_Start_button_down"]
+[connection signal="button_up" from="MenuScreen/CenterContainer2/Start" to="." method="_on_Start_button_up"]
+[connection signal="pressed" from="MenuScreen/CenterContainer2/Start" to="." method="onStart"]
+[connection signal="pressed" from="MenuScreen/VBoxContainer/Leaderboard" to="." method="_on_Leaderboard_pressed"]
+[connection signal="pressed" from="MenuScreen/VBoxContainer/Setting" to="." method="onSetting"]
 [connection signal="pressed" from="SettingScreen/DifficultyOption/Button" to="." method="onDifficultySelect" binds= [ "Easy" ]]
 [connection signal="pressed" from="SettingScreen/DifficultyOption/Button2" to="." method="onDifficultySelect" binds= [ "Normal" ]]
 [connection signal="pressed" from="SettingScreen/DifficultyOption/Button3" to="." method="onDifficultySelect" binds= [ "Hard" ]]
 [connection signal="request_completed" from="RegisterHTTP" to="." method="_on_HTTPRequest_request_completed"]
 [connection signal="request_completed" from="SaveRequest" to="." method="_on_SaveRequest_request_completed"]
-[connection signal="request_completed" from="UpdateRequest" to="." method="_on_UpdateRequest_request_completed"]
 [connection signal="pressed" from="RegisterPOP/register" to="." method="_on_register_pressed"]
+[connection signal="finished" from="BackgroundSong" to="." method="_on_BackgroundSong_finished"]
+[connection signal="timeout" from="LoadingScreen/LoaderTimer" to="LoadingScreen" method="_on_LoaderTimer_timeout"]
+[connection signal="pressed" from="ErrorInfoPOP/Button" to="." method="_on_Ok_Error"]

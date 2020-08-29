@@ -1,12 +1,86 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://StartMenuFonts.tres" type="DynamicFont" id=1]
 [ext_resource path="res://new_theme.tres" type="Theme" id=2]
 [ext_resource path="res://scripts/QuestionArea.gd" type="Script" id=3]
-[ext_resource path="res://newSmallerFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Resource/Image/QuestionBG.png" type="Texture" id=4]
+[ext_resource path="res://Resource/Icon/loading_static.png" type="Texture" id=5]
+[ext_resource path="res://scripts/QuestionAreaLoader.gd" type="Script" id=6]
+[ext_resource path="res://Resource/Font/loadingText.tres" type="DynamicFont" id=7]
+[ext_resource path="res://Resource/Image/ErrorInfoPopBG.png" type="Texture" id=8]
+[ext_resource path="res://Resource/Font/hobo.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Resource/Image/ScoreScreenBG.png" type="Texture" id=10]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 1 )
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=11]
+size = 30
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 35
+font_data = ExtResource( 9 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="DynamicFont" id=9]
+size = 25
+font_data = ExtResource( 9 )
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=14]
+size = 65
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 35
+font_data = ExtResource( 9 )
+
+[sub_resource type="StyleBoxEmpty" id=16]
+
+[sub_resource type="StyleBoxEmpty" id=17]
+
+[sub_resource type="StyleBoxEmpty" id=18]
 
 [node name="QuestionArea" type="Node2D"]
 script = ExtResource( 3 )
@@ -14,7 +88,7 @@ script = ExtResource( 3 )
 [node name="Background" type="ColorRect" parent="."]
 margin_right = 576.0
 margin_bottom = 1024.0
-color = Color( 0.392157, 0.282353, 0.905882, 1 )
+color = Color( 0.0470588, 0.254902, 0.47451, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -79,106 +153,188 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="QuestionContainer" type="VBoxContainer" parent="."]
-margin_right = 576.0
-margin_bottom = 534.0
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="QuestionContainer" type="Node2D" parent="."]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="QuestionContainer"]
-margin_top = 20.0
-margin_right = 566.0
-margin_bottom = 73.0
-rect_min_size = Vector2( 0, 70 )
-alignment = 2
-
-[node name="ScoreLabel" type="Label" parent="QuestionContainer/HBoxContainer"]
-margin_left = 496.0
-margin_right = 566.0
-margin_bottom = 73.0
-custom_fonts/font = ExtResource( 4 )
-text = "Score
-0"
-align = 1
+[node name="AnimatedSprite" type="AnimatedSprite" parent="QuestionContainer"]
+position = Vector2( 286.744, 339.166 )
+scale = Vector2( 0.639086, 0.650318 )
+frames = SubResource( 10 )
 
 [node name="Question" type="Label" parent="QuestionContainer"]
-margin_top = 228.0
-margin_right = 576.0
-margin_bottom = 277.0
-custom_fonts/font = ExtResource( 1 )
+margin_left = 8.0
+margin_top = 138.0
+margin_right = 566.0
+margin_bottom = 457.0
+custom_fonts/font = SubResource( 11 )
 text = "Lorem ipsum dolar shit"
 align = 1
-autowrap = true
-
-[node name="TimeLabel" type="Label" parent="QuestionContainer"]
-margin_top = 281.0
-margin_right = 576.0
-margin_bottom = 382.0
-custom_fonts/font = ExtResource( 1 )
-text = "60
-"
-align = 1
 valign = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Timer" type="Timer" parent="QuestionContainer"]
 
-[node name="FetchQuestions" type="HTTPRequest" parent="."]
-
-[node name="NoMoreQuesPOP" type="PopupMenu" parent="."]
-margin_left = 51.7117
-margin_top = 491.309
-margin_right = 531.712
-margin_bottom = 841.309
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="NoMoreQuesPOP"]
-margin_right = 479.0
-margin_bottom = 348.0
-grow_horizontal = 2
-custom_constants/separation = 50
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="NoMoreQuesPOP/VBoxContainer"]
-margin_top = 54.0
-margin_right = 479.0
-margin_bottom = 203.0
-custom_fonts/font = ExtResource( 4 )
-text = "Looks like you have played all the questions available.Wait for the next Update or try another mode.
-Sorry for unconvenience"
+[node name="TimeLabel" type="Label" parent="QuestionContainer"]
+margin_left = 251.431
+margin_top = 487.148
+margin_right = 322.431
+margin_bottom = 555.148
+custom_fonts/font = SubResource( 12 )
+text = "60"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FetchQuestions" type="HTTPRequest" parent="."]
+
+[node name="LoadingScreen" type="ColorRect" parent="."]
+visible = false
+margin_right = 576.0
+margin_bottom = 1024.0
+color = Color( 0.0470588, 0.254902, 0.47451, 1 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="LoadingScreen"]
+position = Vector2( 288, 512 )
+frames = SubResource( 2 )
+
+[node name="LoaderTimer" type="Timer" parent="LoadingScreen"]
+wait_time = 1.5
+autostart = true
+
+[node name="LoadingTween" type="Tween" parent="LoadingScreen"]
+
+[node name="CenterContainer" type="CenterContainer" parent="LoadingScreen"]
+margin_top = 590.0
+margin_right = 576.0
+margin_bottom = 630.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="LoadingScreen/CenterContainer"]
+margin_left = 233.0
+margin_top = 4.0
+margin_right = 343.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 7 )
+text = "Loading...."
+align = 1
+
+[node name="NoMoreQuesPOP" type="PopupMenu" parent="."]
+margin_left = 95.0
+margin_top = 210.0
+margin_right = 491.0
+margin_bottom = 546.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="NoMoreQuesPOP"]
+margin_left = -96.2171
+margin_top = -210.252
+margin_right = 479.783
+margin_bottom = 813.748
+color = Color( 0.00392157, 0, 0, 0.611765 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="NoMoreQuesPOP"]
+position = Vector2( 199.787, 165.043 )
+scale = Vector2( 0.214582, 0.204347 )
+frames = SubResource( 3 )
+
+[node name="Button" type="Button" parent="NoMoreQuesPOP"]
+margin_left = 152.0
+margin_top = 274.0
+margin_right = 244.0
+margin_bottom = 314.0
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="NoMoreQuesPOP"]
+margin_left = 8.0
+margin_top = 54.0
+margin_right = 387.0
+margin_bottom = 262.0
+custom_fonts/font = SubResource( 9 )
+text = "Looks like you have played enough in this mode.
+Try different mode or wait till we add more questions."
+align = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="NoMoreQuesPOP/VBoxContainer"]
-margin_top = 253.0
-margin_right = 479.0
-margin_bottom = 294.0
+[node name="ScoreScreen" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="ScoreScreen"]
+margin_left = 576.0
+margin_right = 1152.0
+margin_bottom = 1024.0
+color = Color( 0.0470588, 0.254902, 0.47451, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="NoMoreQuesPOP/VBoxContainer/CenterContainer"]
-margin_left = 212.0
-margin_right = 267.0
-margin_bottom = 41.0
-custom_fonts/font = ExtResource( 4 )
-text = "Ok!"
+[node name="ScoreBoard" type="Node2D" parent="ScoreScreen"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="ScoreScreen/ScoreBoard"]
+position = Vector2( 865.174, 569.3 )
+scale = Vector2( 0.249885, 0.24479 )
+frames = SubResource( 13 )
+
+[node name="Score" type="Label" parent="ScoreScreen/ScoreBoard"]
+margin_left = 768.0
+margin_top = 439.0
+margin_right = 973.0
+margin_bottom = 552.0
+custom_fonts/font = SubResource( 14 )
+text = "420"
+align = 1
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HighScore" type="Label" parent="ScoreScreen/ScoreBoard"]
+margin_left = 806.357
+margin_top = 639.595
+margin_right = 927.357
+margin_bottom = 688.595
+custom_fonts/font = SubResource( 15 )
+text = "6000"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HomeButton" type="Button" parent="ScoreScreen/ScoreBoard"]
+margin_left = 805.0
+margin_top = 708.0
+margin_right = 926.0
+margin_bottom = 823.0
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 17 )
+custom_styles/normal = SubResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="timeout" from="QuestionContainer/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="request_completed" from="FetchQuestions" to="." method="_on_FetchQuestions"]
-[connection signal="pressed" from="NoMoreQuesPOP/VBoxContainer/CenterContainer/Button" to="." method="onPopButton"]

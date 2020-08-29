@@ -12,6 +12,7 @@ var startTimer = Utility.gameValues.Timer[gameMode] #startTime[0] is total time
 func _ready():
 	for button in get_tree().get_nodes_in_group("OptionButton"):
 		button.connect("pressed", self, "option_pressed", [button])
+	showLoader()
 	Firebase.get_document(http)
 func _on_FetchQuestions(result, response_code, headers, body):
 	var response_body := JSON.parse(body.get_string_from_ascii())
@@ -30,6 +31,7 @@ func _on_FetchQuestions(result, response_code, headers, body):
 		for i in range(0,docs.size()):
 			Utility.QuestionList.append(docs[i])
 		if not nextPage:
+			hideLoader()
 			$QuestionContainer/Timer.start()
 			askQuestion()
 func askQuestion():
@@ -76,3 +78,8 @@ func _on_Timer_timeout():
 func onPopButton():
 	$NoMoreQuesPOP.hide()
 	get_tree().change_scene("res://MainScreen.tscn")
+
+func showLoader():
+	$LoadingScreen.visible = true
+func hideLoader():
+	$LoadingScreen.visible = false
